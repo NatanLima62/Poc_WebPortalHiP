@@ -7,14 +7,20 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+        <PackageReference Include="FluentValidation" Version="11.7.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.21" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.21">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.21" />
+        <PackageReference Include="NetDevPack.Security.Jwt.Core" Version="7.1.3" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+        <PackageReference Include="ScottBrady91.AspNetCore.Identity.Argon2PasswordHasher" Version="1.4.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
     </ItemGroup>
 
 
@@ -39,6 +45,7 @@
 
     <ItemGroup>
       <Folder Include="Controllers\" />
+      <Folder Include="Core\" />
     </ItemGroup>
 
 
