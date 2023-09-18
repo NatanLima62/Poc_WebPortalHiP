@@ -1,32 +1,13 @@
 using System.Globalization;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Identity.Web;
-using Microsoft.Identity.Web.UI;
 using Poc_WebPortalHiP.Api.Api.Configuration;
 using Poc_WebPortalHiP.Api.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
-IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
-
-builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
-    .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
-    .AddDownstreamApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
-    .AddInMemoryTokenCaches();
-
-builder.Services.AddRazorPages().AddMvcOptions(options =>
-{
-    var policy = new AuthorizationPolicyBuilder()
-        .RequireAuthenticatedUser()
-        .Build();
-    options.Filters.Add(new AuthorizeFilter(policy));
-}).AddMicrosoftIdentityUI();
-
 builder
     .Services
-    .Configure<RequestLocalizationOptions>(o => 
+    .Configure<RequestLocalizationOptions>(o =>
     {
         var supportedCultures = new[] { new CultureInfo("pt-BR") };
         o.DefaultRequestCulture = new RequestCulture("pt-BR", "pt-BR");

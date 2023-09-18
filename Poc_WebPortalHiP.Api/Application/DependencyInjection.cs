@@ -17,6 +17,7 @@ public static class DependencyInjection
     {
         services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+        services.Configure<AzureAdSettings>(configuration.GetSection("AzureAdSettings"));
     }
     public static void ConfigureApplication(this IServiceCollection services, IConfiguration configuration)
     {
