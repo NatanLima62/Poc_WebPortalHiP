@@ -16,6 +16,14 @@ builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration,
     .AddDownstreamApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
     .AddInMemoryTokenCaches();
 
+builder.Services.AddAuthentication()
+    .AddFacebook(facebookOptions =>
+    {
+        facebookOptions.SaveTokens = true;
+        facebookOptions.AppId = builder.Configuration["Facebook:AppId"];
+        facebookOptions.AppSecret = builder.Configuration["Facebook:Secret"];
+    });
+
 builder.Services.AddRazorPages().AddMvcOptions(options =>
 {
     var policy = new AuthorizationPolicyBuilder()
@@ -74,5 +82,7 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();

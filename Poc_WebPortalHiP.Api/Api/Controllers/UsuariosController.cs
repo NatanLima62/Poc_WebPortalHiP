@@ -26,7 +26,7 @@ public class UsuariosController : BaseController
     {
         return OkResponse(await _usuarioService.Adicionar(dto));
     }
-
+    
     [HttpGet("{id}")]
     [SwaggerOperation(Summary = "Obter um Usuário", Tags = new[] { "CRUD - Usuário" })]
     [ProducesResponseType(StatusCodes.Status200OK)]
